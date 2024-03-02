@@ -1,0 +1,19 @@
+
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+b
+2src/main/java/com/api/entity/FoodstuffsEntity.java,e\2\e283a020cae0fec98a6549dd49a0167855b14ec4
+j
+:src/main/java/com/api/controller/FoodstuffsController.java,3\3\33187ce1cf2755910f8558aa66e737883a712046
+\
+,src/main/java/com/api/dto/FoodstuffsDTO.java,2\e\2ef5925183547154cc0e9080c03304ecb033dc40
+Y
+)src/main/java/com/api/ApiApplication.java,c\3\c3a3a87475d70d1d7a74eacb165d73cb2c486de2
+d
+4src/main/java/com/api/service/FoodstuffsService.java,5\b\5b220c07188c5f2f5b305e1654ab1af103ef50ad
+\
+,src/main/java/com/api/dao/FoodstuffsDAO.java,c\4\c42c218eee633c08534188cec001a61034ecb330
+c
+3src/main/java/com/api/dao/FoodstuffsRepository.java,d\a\daf6a76f508e20ee989332b82a0f7e2efbf47dcb
+]
+-src/main/java/com/api/entity/FruitEntity.java,d\4\d43f0cef5504fd02588325e9f7d2f798fc776b64

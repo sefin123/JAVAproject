@@ -2,18 +2,22 @@ package com.api.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+import java.util.Objects;
+
 @Entity
 @Table(name = "foodstuffs")
 public class FoodstuffsEntity {
 
         @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "id")
         private Long id;
 
-        @Column(name = "food_name")
+        @Column(name = "name")
         private String foodName;
 
-        @Column(name = "food_calorie")
+        @Column(name = "calorie")
         private int valueCalorie;
 
     public FoodstuffsEntity() {}
@@ -46,5 +50,15 @@ public class FoodstuffsEntity {
     public void setId(Long id) {
         this.id = id;
     }
-}
 
+    public FoodstuffsEntity SearchByName(List<FoodstuffsEntity> entities, String foodName) {
+        int i = 0;
+        for (; i < entities.size(); i++) {
+            if (Objects.equals(entities.get(i).getFoodName(), foodName)) {
+                break;
+            }
+        }
+        return entities.get(i);
+    }
+
+}

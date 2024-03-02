@@ -15,14 +15,39 @@ public class FoodstuffsService {
         this.foodstuffsDao = foodstuffsDao;
     }
 
-    public int getCalorie(String text) {
+    public FoodstuffsEntity getFood(String foodName) {
+        List<FoodstuffsEntity> entities = foodstuffsDao.loadEntity();
+        return new FoodstuffsEntity().SearchByName(entities, foodName);
+    }
+
+    public FoodstuffsEntity postFood(String foodName, int calorie) {
+        FoodstuffsEntity foodstuffsEntity = new FoodstuffsEntity(foodName, calorie);
+        foodstuffsDao.postEntity(foodstuffsEntity);
+        return foodstuffsEntity;
+    }
+
+    public FoodstuffsEntity putFoodName(String oldFoodName, String newFoodName) {
         List<FoodstuffsEntity> entities = foodstuffsDao.loadEntity();
         int i = 0;
         for (; i < entities.size(); i++) {
-            if (Objects.equals(entities.get(i).getFoodName(), text)) {
+            if (Objects.equals(entities.get(i).getFoodName(), oldFoodName)) {
                 break;
             }
         }
-        return entities.get(i).getValuecalorie();
+        entities.get(i).setFoodName(newFoodName);
+        foodstuffsDao.saveEntity(entities);
+        return entities.get(i);
     }
+
+    public void deleteFoodByName(String foodName) {
+        List<FoodstuffsEntity> entities = foodstuffsDao.loadEntity();
+        int i = 0;
+        for (; i < entities.size(); i++) {
+            if (Objects.equals(entities.get(i).getFoodName(), foodName)) {
+                break;
+            }
+        }
+        foodstuffsDao.deleteEntity(entities.get(i));
+    }
+
 }

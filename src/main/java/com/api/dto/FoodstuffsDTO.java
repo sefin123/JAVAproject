@@ -2,15 +2,10 @@ package com.api.dto;
 
 public class FoodstuffsDTO {
 
-    int id;
-
-    String foodName;
-
     int calorie;
 
-    public FoodstuffsDTO(int id, String foodName, int calorie) {
-        this.id = id;
-        this.foodName = foodName;
+    public FoodstuffsDTO(int calorie) {
+
         this.calorie = calorie;
     }
 

@@ -6,13 +6,13 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="entityManagerFactory" value="8a5240d4-c342-4556-97e4-8a37f42654fd" />
+          <factory-entry name="entityManagerFactory" value="e155d87e-678f-4f02-a4e8-373fd2a0a7cb" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>
     </facet>
   </component>
   <component name="SonarLintModuleSettings">
-    <option name="uniqueId" value="4c2f3227-98d2-4ea6-b49c-242ebedb47d0" />
+    <option name="uniqueId" value="b1c0e8c1-6957-40de-9e29-ac80b4d804d8" />
   </component>
 </module>

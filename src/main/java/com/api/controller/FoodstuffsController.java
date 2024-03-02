@@ -1,10 +1,9 @@
 package com.api.controller;
 
-import com.api.dto.FoodstuffsDTO;
+import com.api.entity.FoodstuffsEntity;
 import com.api.service.FoodstuffsService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class FoodstuffsController {
@@ -14,8 +13,23 @@ public class FoodstuffsController {
         this.foodstuffsService = service;
     }
     @GetMapping("/get")
-    public FoodstuffsDTO processUrl(@RequestParam String text) {
-        int food = foodstuffsService.getCalorie(text);
-        return new FoodstuffsDTO(food);
+    public ResponseEntity<FoodstuffsEntity> getFood(@RequestParam String foodName) {
+        return ResponseEntity.ok(foodstuffsService.getFood(foodName));
+    }
+
+    @PostMapping("/post")
+    public ResponseEntity<FoodstuffsEntity> postFood(@RequestParam String foodName, int calorie) {
+        return ResponseEntity.ok(foodstuffsService.postFood(foodName, calorie));
+    }
+
+    @PutMapping("/put")
+    public ResponseEntity<FoodstuffsEntity> putFoodByName(@RequestParam String oldFoodName, String newFoodName) {
+        return ResponseEntity.ok(foodstuffsService.putFoodName(oldFoodName, newFoodName));
+    }
+
+    @DeleteMapping("/delete")
+    public String deleteFoodByName(@RequestParam String foodName) {
+        foodstuffsService.deleteFoodByName(foodName);
+        return "Completed";
     }
 }
