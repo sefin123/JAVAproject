@@ -35,4 +35,5 @@ public class FoodstuffsController {
         foodstuffsService.deleteFoodByName(name);
         return "Deleted food.";
     }
+
 }
