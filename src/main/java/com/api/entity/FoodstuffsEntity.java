@@ -1,30 +1,34 @@
 package com.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
-import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table(name = "foodstuffs")
 public class FoodstuffsEntity {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "id")
-        private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
-        @Column(name = "name")
-        private String foodName;
+    @Column(name = "name")
+    private String foodName;
 
-        @Column(name = "calorie")
-        private int valueCalorie;
+    @Column(name = "calorie")
+    private int valueCalorie;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    @JsonIgnore
+    private CategoriesEntity category;
 
     public FoodstuffsEntity() {}
 
-    public FoodstuffsEntity(String foodName, int valueCalorie) {
+    public FoodstuffsEntity(String foodName, int valueCalorie, CategoriesEntity category) {
         this.foodName = foodName;
         this.valueCalorie = valueCalorie;
+        this.category = category;
     }
 
     public String getFoodName() {
@@ -51,14 +55,11 @@ public class FoodstuffsEntity {
         this.id = id;
     }
 
-    public FoodstuffsEntity SearchByName(List<FoodstuffsEntity> entities, String foodName) {
-        int i = 0;
-        for (; i < entities.size(); i++) {
-            if (Objects.equals(entities.get(i).getFoodName(), foodName)) {
-                break;
-            }
-        }
-        return entities.get(i);
+    public CategoriesEntity getCategory() {
+        return category;
     }
 
+    public void setCategory(CategoriesEntity category) {
+        this.category = category;
+    }
 }

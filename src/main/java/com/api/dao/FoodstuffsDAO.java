@@ -9,18 +9,15 @@ import java.util.List;
 public class FoodstuffsDAO {
     private final FoodstuffsRepository foodstuffsRepository;
 
-
     public FoodstuffsDAO(FoodstuffsRepository foodstuffsRepository) {
         this.foodstuffsRepository = foodstuffsRepository;
     }
 
-    public List<FoodstuffsEntity> loadEntity() {
-        return foodstuffsRepository.findAll();
-    }
+    public List<FoodstuffsEntity> loadEntity() { return foodstuffsRepository.findAll(); }
 
     public void postEntity(FoodstuffsEntity foodstuffsEntity) { foodstuffsRepository.save(foodstuffsEntity); }
 
-    public void saveEntity(List<FoodstuffsEntity> entities) {foodstuffsRepository.saveAll(entities);}
+    public void saveEntity(List<FoodstuffsEntity> entities) { foodstuffsRepository.saveAll(entities); }
 
-    public void deleteEntity(FoodstuffsEntity foodstuffsEntity) {foodstuffsRepository.delete(foodstuffsEntity);}
+    public void deleteEntity(FoodstuffsEntity foodstuffsEntity) { foodstuffsRepository.delete(foodstuffsEntity); }
 }

@@ -7,29 +7,32 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class FoodstuffsController {
+
     private final FoodstuffsService foodstuffsService;
 
     public FoodstuffsController(FoodstuffsService service) {
         this.foodstuffsService = service;
     }
-    @GetMapping("/get")
-    public ResponseEntity<FoodstuffsEntity> getFood(@RequestParam String foodName) {
-        return ResponseEntity.ok(foodstuffsService.getFood(foodName));
+
+    @GetMapping("/food")
+    public ResponseEntity<FoodstuffsEntity> getFood(@RequestParam String name) {
+        return ResponseEntity.ok(foodstuffsService.getFood(name));
     }
 
-    @PostMapping("/post")
-    public ResponseEntity<FoodstuffsEntity> postFood(@RequestParam String foodName, int calorie) {
-        return ResponseEntity.ok(foodstuffsService.postFood(foodName, calorie));
+    @PostMapping("/food")
+    public ResponseEntity<FoodstuffsEntity> postFood(@RequestParam String name, int calorie, String category) {
+        return ResponseEntity.ok(foodstuffsService.postFood(name, calorie, category));
     }
 
-    @PutMapping("/put")
-    public ResponseEntity<FoodstuffsEntity> putFoodByName(@RequestParam String oldFoodName, String newFoodName) {
-        return ResponseEntity.ok(foodstuffsService.putFoodName(oldFoodName, newFoodName));
+    @PutMapping("/food")
+    public String putFood(@RequestParam String oldName, String newName) {
+        foodstuffsService.putFoodName(oldName, newName);
+        return "Renamed food.";
     }
 
-    @DeleteMapping("/delete")
-    public String deleteFoodByName(@RequestParam String foodName) {
-        foodstuffsService.deleteFoodByName(foodName);
-        return "Completed";
+    @DeleteMapping("/food")
+    public String deleteFood(@RequestParam String name) {
+        foodstuffsService.deleteFoodByName(name);
+        return "Deleted food.";
     }
 }
