@@ -1,5 +1,6 @@
 package com.api.controller;
 
+import com.api.dto.FoodstuffsDTO;
 import com.api.entity.FoodstuffsEntity;
 import com.api.service.FoodstuffsService;
 import org.springframework.http.ResponseEntity;
@@ -15,13 +16,14 @@ public class FoodstuffsController {
     }
 
     @GetMapping("/food")
-    public ResponseEntity<FoodstuffsEntity> getFood(@RequestParam String name) {
+    public ResponseEntity<FoodstuffsDTO> getFood(@RequestParam String name) {
         return ResponseEntity.ok(foodstuffsService.getFood(name));
     }
 
     @PostMapping("/food")
-    public ResponseEntity<FoodstuffsEntity> postFood(@RequestParam String name, int calorie, String category) {
-        return ResponseEntity.ok(foodstuffsService.postFood(name, calorie, category));
+    public String postFood(@RequestParam String name, int calorie, String category) {
+                foodstuffsService.postFood(name, calorie, category);
+        return "Posted food.";
     }
 
     @PutMapping("/food")

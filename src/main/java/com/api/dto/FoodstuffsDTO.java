@@ -1,10 +1,11 @@
 package com.api.dto;
 
 
+import com.api.entity.FoodstuffsEntity;
 
 public class FoodstuffsDTO {
 
-    private String id;
+    private Long id;
 
     private String name;
 
@@ -12,11 +13,19 @@ public class FoodstuffsDTO {
 
     private String category;
 
-    public FoodstuffsDTO(String id, String name, int calorie, String category) {
+    public FoodstuffsDTO(Long id, String name, int calorie, String category) {
         this.id = id;
         this.name = name;
         this.calorie = calorie;
         this.category = category;
+    }
+
+    public FoodstuffsDTO(FoodstuffsEntity foodstuffsEntity) {
+        this.id = foodstuffsEntity.getId();
+        this.name = foodstuffsEntity.getFoodName();
+        this.calorie = foodstuffsEntity.getValuecalorie();
+        this.category = foodstuffsEntity.getCategory().getCategory();
+
     }
 
     public int getCalorie() {
@@ -27,11 +36,11 @@ public class FoodstuffsDTO {
         this.calorie = calorie;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

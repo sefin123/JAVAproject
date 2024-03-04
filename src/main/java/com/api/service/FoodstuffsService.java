@@ -2,6 +2,7 @@ package com.api.service;
 
 import com.api.dao.CategoriesDAO;
 import com.api.dao.FoodstuffsDAO;
+import com.api.dto.FoodstuffsDTO;
 import com.api.entity.CategoriesEntity;
 import com.api.entity.FoodstuffsEntity;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class FoodstuffsService {
         this.categoriesDAO = categoriesDAO;
     }
 
-    public FoodstuffsEntity getFood(String foodName) {
+    public FoodstuffsDTO getFood(String foodName) {
         List<FoodstuffsEntity> entities = foodstuffsDao.loadEntity();
         int i = 0;
         for (; i < entities.size(); i++) {
@@ -38,7 +39,7 @@ public class FoodstuffsService {
             }
         }
         entities.get(i).setCategory(list.get(j));
-        return entities.get(i);
+        return new FoodstuffsDTO(entities.get(i));
     }
 
     public FoodstuffsEntity postFood(String foodName, int calorie, String category) {

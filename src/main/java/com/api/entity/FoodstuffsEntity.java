@@ -1,6 +1,5 @@
 package com.api.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -20,7 +19,6 @@ public class FoodstuffsEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
-    @JsonIgnore
     private CategoriesEntity category;
 
     public FoodstuffsEntity() {}
