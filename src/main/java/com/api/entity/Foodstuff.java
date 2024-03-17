@@ -43,16 +43,8 @@ public class Foodstuff {
         return calorie;
     }
 
-    public void setCalorie(int calorie) {
-        this.calorie = calorie;
-    }
-
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Category getCategory() {

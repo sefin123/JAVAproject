@@ -15,8 +15,8 @@ public class FoodstuffController {
     }
 
     @GetMapping("/food")
-    public ResponseEntity<FoodstuffDTO> getFood(@RequestParam String name) {
-        return ResponseEntity.ok(foodstuffService.getFood(name));
+    public ResponseEntity<FoodstuffDTO> getFoodByName(@RequestParam String name) {
+        return ResponseEntity.ok(foodstuffService.getFoodByName(name));
     }
 
     @PostMapping("/food")

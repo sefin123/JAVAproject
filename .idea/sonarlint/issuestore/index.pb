@@ -23,3 +23,5 @@ c
 3src/main/java/com/api/service/FoodstuffService.java,8\5\8509b40d6c2b543c63fd0f9b1cf7b8b76573dc87
 [
 +src/main/java/com/api/dto/FoodstuffDTO.java,6\4\643b5a962a505ebd3813a6ad2e70146b4dede94c
+Z
+*src/main/java/com/api/component/Cache.java,6\e\6e36bd64dda58de7dab029c53f05d5e02a8265d0

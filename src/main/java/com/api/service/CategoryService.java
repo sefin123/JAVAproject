@@ -1,58 +1,54 @@
 package com.api.service;
 
+import com.api.component.Cache;
 import com.api.dao.CategoryRepository;
 import com.api.dto.CategoryDTO;
 import com.api.entity.Category;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Objects;
 
 @Service
 public class CategoryService {
 
     private final CategoryRepository categoryRepository;
 
-    public CategoryService(CategoryRepository categoryRepository) {
+    private final Cache cache;
+
+    public CategoryService(CategoryRepository categoryRepository, Cache cache) {
         this.categoryRepository = categoryRepository;
+        this.cache = cache;
     }
 
-    public CategoryDTO getCategoriesEntity(String category) {
-        List<Category> categories = categoryRepository.findAll();
-        int i = 0;
-        for(; i < categories.size(); i++) {
-            if (Objects.equals(categories.get(i).getName(), category)) {
-                break;
-            }
-        }
-        return new CategoryDTO(categories.get(i));
+    public CategoryDTO getCategoriesEntity(String name) {
+
+        CategoryDTO category = (CategoryDTO) cache.get(name);
+        if(category != null) return category;
+
+        Category entity = categoryRepository.getCategoryByName(name);
+
+        cache.put(name, new CategoryDTO(entity));
+
+        return new CategoryDTO(entity);
     }
 
-    public void postCategoriesEntity(String category) {
-        Category categoriesEntity = new Category(category);
+    public void postCategoriesEntity(String name) {
+        Category categoriesEntity = new Category(name);
+
         categoryRepository.save(categoriesEntity);
     }
 
-    public void putCategoriesEntity(String oldCategory, String newCategory) {
-        List<Category> categories = categoryRepository.findAll();
-        int i = 0;
-        for(; i < categories.size(); i++) {
-            if (Objects.equals(categories.get(i).getName(), oldCategory)) {
-                break;
-            }
-        }
-        categories.get(i).setName(newCategory);
-        categoryRepository.saveAll(categories);
+    public void putCategoriesEntity(String oldName, String newName) {
+        Category entity = categoryRepository.getCategoryByName(oldName);
+
+        entity.setName(newName);
+
+        cache.remove(oldName);
+
+        categoryRepository.save(entity);
     }
 
-    public void deleteCategoriesEntity(String category) {
-        List<Category> categories = categoryRepository.findAll();
-        int i = 0;
-        for(; i < categories.size(); i++) {
-            if (Objects.equals(categories.get(i).getName(), category)) {
-                break;
-            }
-        }
-        categoryRepository.delete(categories.get(i));
+    public void deleteCategoriesEntity(String name) {
+        Category entity = categoryRepository.getCategoryByName(name);
+
+        categoryRepository.delete(entity);
     }
 }

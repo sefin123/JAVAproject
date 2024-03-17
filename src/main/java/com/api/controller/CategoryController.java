@@ -5,24 +5,23 @@ import com.api.service.CategoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
 public class CategoryController {
 
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
 
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
     @GetMapping("/category")
-    public ResponseEntity<CategoryDTO> getCategory(String category) {
-        return ResponseEntity.ok(categoryService.getCategoriesEntity(category));
+    public ResponseEntity<CategoryDTO> getCategory(String name) {
+        return ResponseEntity.ok(categoryService.getCategoriesEntity(name));
     }
 
     @PostMapping("/category")
-    public String postCategory(String category) {
-        categoryService.postCategoriesEntity(category);
+    public String postCategory(String name) {
+        categoryService.postCategoriesEntity(name);
         return "Posted category.";
     }
 
@@ -33,16 +32,9 @@ public class CategoryController {
     }
 
     @DeleteMapping("/category")
-    public String deleteCategory(String category) {
-        categoryService.deleteCategoriesEntity(category);
+    public String deleteCategory(String name) {
+        categoryService.deleteCategoriesEntity(name);
         return "Deleted category.";
     }
 
-    public CategoryService getCategoriesService() {
-        return categoryService;
-    }
-
-    public void setCategoriesService(CategoryService categoryService) {
-        this.categoryService = categoryService;
-    }
 }
