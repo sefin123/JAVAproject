@@ -4,10 +4,14 @@ import com.api.component.Cache;
 import com.api.dao.CategoryRepository;
 import com.api.dto.CategoryDTO;
 import com.api.entity.Category;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class CategoryService {
+
+    private static final String LOG_STRING = " found in cache";
 
     private final CategoryRepository categoryRepository;
 
@@ -21,7 +25,10 @@ public class CategoryService {
     public CategoryDTO getCategoriesEntity(String name) {
 
         CategoryDTO category = (CategoryDTO) cache.get(name);
-        if(category != null) return category;
+        if(category != null){
+            log.info(category.getCategory() + LOG_STRING);
+            return category;
+        }
 
         Category entity = categoryRepository.getCategoryByName(name);
 
@@ -31,9 +38,9 @@ public class CategoryService {
     }
 
     public void postCategoriesEntity(String name) {
-        Category categoriesEntity = new Category(name);
+        Category entity = new Category(name);
 
-        categoryRepository.save(categoriesEntity);
+        categoryRepository.save(entity);
     }
 
     public void putCategoriesEntity(String oldName, String newName) {
@@ -48,6 +55,8 @@ public class CategoryService {
 
     public void deleteCategoriesEntity(String name) {
         Category entity = categoryRepository.getCategoryByName(name);
+
+        cache.remove(name);
 
         categoryRepository.delete(entity);
     }

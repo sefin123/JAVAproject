@@ -6,10 +6,14 @@ import com.api.dao.FoodstuffRepository;
 import com.api.dto.FoodstuffDTO;
 import com.api.entity.Category;
 import com.api.entity.Foodstuff;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class FoodstuffService {
+
+    private static final String LOG_STRING = " found in cache";
 
     private final FoodstuffRepository foodstuffRepository;
 
@@ -26,7 +30,10 @@ public class FoodstuffService {
     public FoodstuffDTO getFoodByName(String name) {
 
         FoodstuffDTO food = (FoodstuffDTO) cache.get(name);
-        if(food != null) return food;
+        if(food != null){
+            log.info(food.getName() + LOG_STRING);
+            return food;
+        }
 
         Foodstuff foodstuffEntity = foodstuffRepository.getFoodByName(name);
         Category categoryEntity = categoryRepository.getCategoryByName(foodstuffEntity.getCategory().getName());
@@ -41,9 +48,9 @@ public class FoodstuffService {
     public void postFood(String name, int calorie, String category) {
         Category categoryEntity = categoryRepository.getCategoryByName(category);
 
-        Foodstuff foodstuff = new Foodstuff(name, calorie, categoryEntity);
+        Foodstuff foodstuffEntity = new Foodstuff(name, calorie, categoryEntity);
 
-        foodstuffRepository.save(foodstuff);
+        foodstuffRepository.save(foodstuffEntity);
     }
 
     public void putFoodName(String oldName, String newName) {
@@ -58,6 +65,8 @@ public class FoodstuffService {
 
     public void deleteFoodByName(String name) {
         Foodstuff entity = foodstuffRepository.getFoodByName(name);
+
+        cache.remove(name);
 
         foodstuffRepository.delete(entity);
     }
