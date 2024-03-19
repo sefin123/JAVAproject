@@ -25,3 +25,9 @@ c
 +src/main/java/com/api/dto/FoodstuffDTO.java,6\4\643b5a962a505ebd3813a6ad2e70146b4dede94c
 Z
 *src/main/java/com/api/component/Cache.java,6\e\6e36bd64dda58de7dab029c53f05d5e02a8265d0
+e
+5src/main/java/com/api/exception/ExceptionHandler.java,7\b\7b532fcd6c7d628fbbd2c7962719a301fd7cfeea
+k
+;src/main/java/com/api/exception/GlobalExceptionHandler.java,0\f\0fe36cb104b1022d2b1897da58f5321ae169fd09
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
