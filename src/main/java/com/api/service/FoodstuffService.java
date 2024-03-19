@@ -31,7 +31,7 @@ public class FoodstuffService {
 
         FoodstuffDTO food = (FoodstuffDTO) cache.get(name);
         if(food != null){
-            log.info(food.getName() + LOG_STRING);
+            log.info(food.getName() + LOG_STRING); 
             return food;
         }
 
