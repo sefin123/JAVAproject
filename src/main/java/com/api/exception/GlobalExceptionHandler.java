@@ -14,7 +14,6 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @Slf4j
 public class GlobalExceptionHandler {
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public ResponseEntity<String> handleBadRequestException(Exception ex) {
         log.info("error 400: " + ex.getMessage());

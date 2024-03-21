@@ -23,7 +23,7 @@ public class Foodstuff {
     @JsonIgnore
     private Category category;
 
-    public Foodstuff() {}
+    public Foodstuff() { }
 
     public Foodstuff(String name, int calorie, Category category) {
         this.name = name;

@@ -1,9 +1,12 @@
 package com.api.controller;
 
 import com.api.dto.FoodstuffDTO;
+import com.api.entity.Foodstuff;
 import com.api.service.FoodstuffService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class FoodstuffController {
@@ -21,7 +24,13 @@ public class FoodstuffController {
 
     @PostMapping("/food")
     public String postFood(@RequestParam String name, int calorie, String category) {
-                foodstuffService.postFood(name, calorie, category);
+        foodstuffService.postFood(name, calorie, category);
+        return "Posted food.";
+    }
+
+    @PostMapping("/food/bulk")
+    public String postFoodBulk(@RequestBody List<FoodstuffDTO> food) {
+        foodstuffService.postFoodBulk(food);
         return "Posted food.";
     }
 
@@ -36,7 +45,5 @@ public class FoodstuffController {
         foodstuffService.deleteFoodByName(name);
         return "Deleted food.";
     }
-
-
 
 }

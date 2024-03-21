@@ -9,6 +9,8 @@ import com.api.entity.Foodstuff;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class FoodstuffService {
@@ -30,7 +32,7 @@ public class FoodstuffService {
     public FoodstuffDTO getFoodByName(String name) {
 
         FoodstuffDTO food = (FoodstuffDTO) cache.get(name);
-        if(food != null){
+        if (food != null) {
             log.info(food.getName() + LOG_STRING); 
             return food;
         }
@@ -43,6 +45,18 @@ public class FoodstuffService {
         cache.put(name, new FoodstuffDTO(foodstuffEntity));
 
         return new FoodstuffDTO(foodstuffEntity);
+    }
+
+    public void postFoodBulk(List<FoodstuffDTO> foodList) {
+
+        List<Foodstuff> foodstuffList = foodList.stream()
+                .map(food -> {
+                    Category categoryEntity = categoryRepository.getCategoryByName(food.getCategory());
+                    return new Foodstuff(food.getName(), food.getCalorie(), categoryEntity);
+                }).toList();
+
+        foodstuffRepository.saveAll(foodstuffList);
+
     }
 
     public void postFood(String name, int calorie, String category) {

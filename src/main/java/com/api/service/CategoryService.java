@@ -25,7 +25,7 @@ public class CategoryService {
     public CategoryDTO getCategoriesEntity(String name) {
 
         CategoryDTO category = (CategoryDTO) cache.get(name);
-        if(category != null){
+        if (category != null) {
             log.info(category.getCategory() + LOG_STRING);
             return category;
         }
