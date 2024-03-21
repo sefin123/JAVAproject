@@ -13,6 +13,8 @@ public class CategoryDTO {
 
     private List<Foodstuff> foodstuffs;
 
+    public CategoryDTO() { }
+
     public CategoryDTO(Category category) {
         this.id = category.getId();
         this.name = category.getName();

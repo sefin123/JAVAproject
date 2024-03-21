@@ -1,7 +1,6 @@
 package com.api.controller;
 
 import com.api.dto.FoodstuffDTO;
-import com.api.entity.Foodstuff;
 import com.api.service.FoodstuffService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
