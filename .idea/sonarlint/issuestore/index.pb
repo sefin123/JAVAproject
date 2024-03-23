@@ -37,3 +37,5 @@ l
 <src/test/java/com/api/controller/CategoryControllerTest.java,d\2\d21eab0b650ddd92305ed890be4c9bc104c807c9
 m
 =src/test/java/com/api/controller/FoodstuffControllerTest.java,a\8\a81ac94c7dcd27ac1ad74b8398d345657f24b237
+^
+.src/test/java/com/api/component/CacheTest.java,9\6\96f0ad4ba777e477f8a51914fa21d21dbc6778a5
