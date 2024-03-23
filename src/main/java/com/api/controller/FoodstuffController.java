@@ -12,37 +12,39 @@ public class FoodstuffController {
 
     private final FoodstuffService foodstuffService;
 
+    static final String SUCCESS_CODE = "Success";
+
     public FoodstuffController(FoodstuffService service) {
         this.foodstuffService = service;
     }
 
     @GetMapping("/food")
-    public ResponseEntity<FoodstuffDTO> getFoodByName(@RequestParam String name) {
+    public ResponseEntity<FoodstuffDTO> getFood(@RequestParam String name) {
         return ResponseEntity.ok(foodstuffService.getFoodByName(name));
     }
 
     @PostMapping("/food")
-    public String postFood(@RequestParam String name, int calorie, String category) {
+    public ResponseEntity<String> postFood(@RequestParam String name, int calorie, String category) {
         foodstuffService.postFood(name, calorie, category);
-        return "Posted food.";
+        return ResponseEntity.ok(SUCCESS_CODE);
     }
 
     @PostMapping("/food/bulk")
-    public String postFoodBulk(@RequestBody List<FoodstuffDTO> food) {
+    public ResponseEntity<String> postFoodBulk(@RequestBody List<FoodstuffDTO> food) {
         foodstuffService.postFoodBulk(food);
-        return "Posted food.";
+        return ResponseEntity.ok(SUCCESS_CODE);
     }
 
     @PutMapping("/food")
-    public String putFood(@RequestParam String oldName, String newName) {
+    public ResponseEntity<String> putFood(@RequestParam String oldName, String newName) {
         foodstuffService.putFoodName(oldName, newName);
-        return "Renamed food.";
+        return ResponseEntity.ok(SUCCESS_CODE);
     }
 
     @DeleteMapping("/food")
-    public String deleteFood(@RequestParam String name) {
+    public ResponseEntity<String> deleteFood(@RequestParam String name) {
         foodstuffService.deleteFoodByName(name);
-        return "Deleted food.";
+        return ResponseEntity.ok(SUCCESS_CODE);
     }
 
 }

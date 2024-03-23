@@ -35,3 +35,5 @@ C
 log/application.log,5\5\557bf5dd386a3868ae12430b3ea7363ae788f1ce
 l
 <src/test/java/com/api/controller/CategoryControllerTest.java,d\2\d21eab0b650ddd92305ed890be4c9bc104c807c9
+m
+=src/test/java/com/api/controller/FoodstuffControllerTest.java,a\8\a81ac94c7dcd27ac1ad74b8398d345657f24b237

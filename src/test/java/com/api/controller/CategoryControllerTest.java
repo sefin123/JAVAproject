@@ -16,6 +16,7 @@ class CategoryControllerTest {
 
     @Mock
     private CategoryService categoryService;
+
     private CategoryController categoryController;
 
     @BeforeEach
@@ -26,10 +27,10 @@ class CategoryControllerTest {
 
     @Test
     void getCategory_ReturnsOkResponseWithCategoryDTO() {
-        String categoryName = "test";
+        String categoryName = "Test category";
         CategoryDTO expectedCategory = new CategoryDTO();
 
-        when(categoryService.getCategoriesEntity(categoryName)).thenReturn(expectedCategory);
+        when(categoryService.getCategory(categoryName)).thenReturn(expectedCategory);
 
         ResponseEntity<CategoryDTO> response = categoryController.getCategory(categoryName);
 
@@ -41,9 +42,9 @@ class CategoryControllerTest {
     void postCategory_ReturnsSuccessMessage() {
         String categoryName = "Test Category";
 
-        String response = categoryController.postCategory(categoryName);
+        ResponseEntity<String> response = categoryController.postCategory(categoryName);
 
-        assertEquals("Posted category.", response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
@@ -51,18 +52,18 @@ class CategoryControllerTest {
         String oldName = "Old Category";
         String newName = "New Category";
 
-        String response = categoryController.putCategory(oldName, newName);
+        ResponseEntity<String> response = categoryController.putCategory(oldName, newName);
 
-        assertEquals("Putted category.", response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
     void deleteCategory_ReturnsSuccessMessage() {
         String categoryName = "Test Category";
 
-        String response = categoryController.deleteCategory(categoryName);
+        ResponseEntity<String> response = categoryController.deleteCategory(categoryName);
 
-        assertEquals("Deleted category.", response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
 }

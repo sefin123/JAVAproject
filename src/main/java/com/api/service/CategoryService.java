@@ -22,7 +22,7 @@ public class CategoryService {
         this.cache = cache;
     }
 
-    public CategoryDTO getCategoriesEntity(String name) {
+    public CategoryDTO getCategory(String name) {
 
         CategoryDTO category = (CategoryDTO) cache.get(name);
         if (category != null) {
@@ -37,13 +37,13 @@ public class CategoryService {
         return new CategoryDTO(entity);
     }
 
-    public void postCategoriesEntity(String name) {
+    public void postCategory(String name) {
         Category entity = new Category(name);
 
         categoryRepository.save(entity);
     }
 
-    public void putCategoriesEntity(String oldName, String newName) {
+    public void putCategory(String oldName, String newName) {
         Category entity = categoryRepository.getCategoryByName(oldName);
 
         entity.setName(newName);
@@ -53,7 +53,7 @@ public class CategoryService {
         categoryRepository.save(entity);
     }
 
-    public void deleteCategoriesEntity(String name) {
+    public void deleteCategory(String name) {
         Category entity = categoryRepository.getCategoryByName(name);
 
         cache.remove(name);

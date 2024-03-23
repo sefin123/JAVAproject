@@ -10,31 +10,33 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
+    static final String SUCCESS_CODE = "Success";
+
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
     @GetMapping("/category")
     public ResponseEntity<CategoryDTO> getCategory(String name) {
-        return ResponseEntity.ok(categoryService.getCategoriesEntity(name));
+        return ResponseEntity.ok(categoryService.getCategory(name));
     }
 
     @PostMapping("/category")
-    public String postCategory(String name) {
-        categoryService.postCategoriesEntity(name);
-        return "Posted category.";
+    public ResponseEntity<String> postCategory(String name) {
+        categoryService.postCategory(name);
+        return ResponseEntity.ok(SUCCESS_CODE);
     }
 
     @PutMapping("/category")
-    public String putCategory(String oldName, String newName) {
-        categoryService.putCategoriesEntity(oldName, newName);
-        return "Putted category.";
+    public ResponseEntity<String> putCategory(String oldName, String newName) {
+        categoryService.putCategory(oldName, newName);
+        return ResponseEntity.ok(SUCCESS_CODE);
     }
 
     @DeleteMapping("/category")
-    public String deleteCategory(String name) {
-        categoryService.deleteCategoriesEntity(name);
-        return "Deleted category.";
+    public ResponseEntity<String> deleteCategory(String name) {
+        categoryService.deleteCategory(name);
+        return ResponseEntity.ok(SUCCESS_CODE);
     }
 
 }

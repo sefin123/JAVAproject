@@ -28,6 +28,8 @@ public class FoodstuffDTO {
 
     }
 
+    public FoodstuffDTO() { }
+
     public int getCalorie() {
         return calorie;
     }
