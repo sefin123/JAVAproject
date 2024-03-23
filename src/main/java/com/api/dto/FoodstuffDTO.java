@@ -1,8 +1,11 @@
 package com.api.dto;
 
-
 import com.api.entity.Foodstuff;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 public class FoodstuffDTO {
 
     private Long id;
@@ -30,35 +33,4 @@ public class FoodstuffDTO {
 
     public FoodstuffDTO() { }
 
-    public int getCalorie() {
-        return calorie;
-    }
-
-    public void setCalorie(int calorie) {
-        this.calorie = calorie;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
 }

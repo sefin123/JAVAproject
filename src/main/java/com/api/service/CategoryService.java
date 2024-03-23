@@ -26,7 +26,7 @@ public class CategoryService {
 
         CategoryDTO category = (CategoryDTO) cache.get(name);
         if (category != null) {
-            log.info(category.getCategory() + LOG_STRING);
+            log.info(category.getName() + LOG_STRING);
             return category;
         }
 

@@ -39,3 +39,7 @@ m
 =src/test/java/com/api/controller/FoodstuffControllerTest.java,a\8\a81ac94c7dcd27ac1ad74b8398d345657f24b237
 ^
 .src/test/java/com/api/component/CacheTest.java,9\6\96f0ad4ba777e477f8a51914fa21d21dbc6778a5
+^
+.src/test/java/com/api/dto/CategoryDTOTest.java,4\1\41cd5bd157a2b0a446e26add2375b5c3b439617c
+_
+/src/test/java/com/api/dto/FoodstuffDTOTest.java,1\e\1ed9e87744bca8eaaceae2f92cf4bf690cb80b10

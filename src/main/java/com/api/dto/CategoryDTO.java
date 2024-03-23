@@ -2,9 +2,13 @@ package com.api.dto;
 
 import com.api.entity.Category;
 import com.api.entity.Foodstuff;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
+@Setter
+@Getter
 public class CategoryDTO {
 
     private Long id;
@@ -21,27 +25,9 @@ public class CategoryDTO {
         this.foodstuffs = category.getFoodstuffs();
     }
 
-    public List<Foodstuff> getList() {
-        return foodstuffs;
-    }
-
-    public void setFoodstuffs(List<Foodstuff> foodstuffs) {
+    public CategoryDTO(Long id, String name, List<Foodstuff> foodstuffs) {
+        this.name = name;
         this.foodstuffs = foodstuffs;
     }
 
-    public String getCategory() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 }
