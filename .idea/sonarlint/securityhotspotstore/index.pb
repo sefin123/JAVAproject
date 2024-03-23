@@ -47,3 +47,5 @@ _
 .src/test/java/com/api/entity/CategoryTest.java,1\c\1c0d3a35545aaff8225b5c5a2b96463e5fe912b7
 _
 /src/test/java/com/api/entity/FoodstuffTest.java,3\5\356c151ed602fb92069ccb56ba7da8ae6c6070b8
+o
+?src/test/java/com/api/exception/GlobalExceptionHandlerTest.java,4\2\4277a6cb0ca3554ff8dd8f843670d3f60d22478b
