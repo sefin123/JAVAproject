@@ -26,6 +26,7 @@ public class CategoryDTO {
     }
 
     public CategoryDTO(Long id, String name, List<Foodstuff> foodstuffs) {
+        this.id = id;
         this.name = name;
         this.foodstuffs = foodstuffs;
     }

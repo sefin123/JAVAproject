@@ -2,8 +2,13 @@ package com.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "category")
 public class Category {
@@ -25,21 +30,5 @@ public class Category {
     }
 
     public Category() { }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Foodstuff> getFoodstuffs() {
-        return foodstuffs;
-    }
 
 }

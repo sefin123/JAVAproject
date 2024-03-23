@@ -43,3 +43,7 @@ m
 .src/test/java/com/api/dto/CategoryDTOTest.java,4\1\41cd5bd157a2b0a446e26add2375b5c3b439617c
 _
 /src/test/java/com/api/dto/FoodstuffDTOTest.java,1\e\1ed9e87744bca8eaaceae2f92cf4bf690cb80b10
+^
+.src/test/java/com/api/entity/CategoryTest.java,1\c\1c0d3a35545aaff8225b5c5a2b96463e5fe912b7
+_
+/src/test/java/com/api/entity/FoodstuffTest.java,3\5\356c151ed602fb92069ccb56ba7da8ae6c6070b8
