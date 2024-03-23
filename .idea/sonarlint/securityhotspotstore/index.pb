@@ -49,3 +49,7 @@ _
 /src/test/java/com/api/entity/FoodstuffTest.java,3\5\356c151ed602fb92069ccb56ba7da8ae6c6070b8
 o
 ?src/test/java/com/api/exception/GlobalExceptionHandlerTest.java,4\2\4277a6cb0ca3554ff8dd8f843670d3f60d22478b
+f
+6src/test/java/com/api/service/CategoryServiceTest.java,6\6\66a9586177a42295a68101cff4f4214628b65bad
+g
+7src/test/java/com/api/service/FoodstuffServiceTest.java,c\8\c8a8a83e3eeafae61ea4d344a0f2137d4ff5bda2
