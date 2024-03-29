@@ -53,3 +53,5 @@ f
 6src/test/java/com/api/service/CategoryServiceTest.java,6\6\66a9586177a42295a68101cff4f4214628b65bad
 g
 7src/test/java/com/api/service/FoodstuffServiceTest.java,c\8\c8a8a83e3eeafae61ea4d344a0f2137d4ff5bda2
+]
+-src/test/java/com/api/ApiApplicationTest.java,9\6\9606e80624b1717b054819a52e3ebbcf2b6e8fc7
