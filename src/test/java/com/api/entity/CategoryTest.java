@@ -17,7 +17,7 @@ class CategoryTest {
         Category category = new Category(name);
         list.add(food);
 
-        assertEquals(name, list.getFirst().getName());
+        assertEquals(name, list.get(0).getName());
         assertEquals(name, category.getName());
     }
 
