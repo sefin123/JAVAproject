@@ -33,7 +33,7 @@ public class FoodstuffService {
 
         FoodstuffDTO food = (FoodstuffDTO) cache.get(name);
         if (food != null) {
-            log.info(food.getName() + LOG_STRING); 
+            log.info(food.getName() + LOG_STRING);
             return food;
         }
 
@@ -45,6 +45,7 @@ public class FoodstuffService {
         cache.put(name, new FoodstuffDTO(foodstuffEntity));
 
         return new FoodstuffDTO(foodstuffEntity);
+
     }
 
     public void postFoodBulk(List<FoodstuffDTO> foodList) {
@@ -60,14 +61,17 @@ public class FoodstuffService {
     }
 
     public void postFood(String name, int calorie, String category) {
+
         Category categoryEntity = categoryRepository.getCategoryByName(category);
 
         Foodstuff foodstuffEntity = new Foodstuff(name, calorie, categoryEntity);
 
         foodstuffRepository.save(foodstuffEntity);
+
     }
 
     public void putFoodName(String oldName, String newName) {
+
         Foodstuff entity = foodstuffRepository.getFoodByName(oldName);
 
         entity.setName(newName);
@@ -75,14 +79,17 @@ public class FoodstuffService {
         cache.remove(oldName);
 
         foodstuffRepository.save(entity);
+
     }
 
     public void deleteFoodByName(String name) {
+
         Foodstuff entity = foodstuffRepository.getFoodByName(name);
 
         cache.remove(name);
 
         foodstuffRepository.delete(entity);
+
     }
 
 }

@@ -4,17 +4,17 @@ import com.api.component.Cache;
 import com.api.dao.CategoryRepository;
 import com.api.dto.CategoryDTO;
 import com.api.entity.Category;
+import com.api.entity.Foodstuff;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import static org.hamcrest.Matchers.any;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class CategoryServiceTest {
     private CategoryService categoryService;
@@ -59,15 +59,18 @@ class CategoryServiceTest {
 
     @Test
     void testPostCategory() {
-        String categoryName = "Test";
-        Category categoryEntity = new Category(categoryName);
-        Category savedCategory = new Category();
+        String name = "Test";
+        Category categoryEntity = new Category(name);
+        Foodstuff food = new Foodstuff();
 
-        when(categoryRepository.save(savedCategory)).thenReturn(categoryEntity);
+        categoryEntity.setFoodstuffs(List.of(food));
+        categoryEntity.setId(1L);
 
-        categoryService.postCategory(categoryName);
+        when(categoryRepository.save(any(Category.class))).thenReturn(categoryEntity);
 
-        Mockito.verify(categoryRepository, times(1)).save(savedCategory);////////
+        categoryService.postCategory(name);
+
+        verify(categoryRepository, times(1)).save(categoryEntity);
     }
 
     @Test

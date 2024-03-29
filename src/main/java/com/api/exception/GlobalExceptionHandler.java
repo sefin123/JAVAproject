@@ -16,31 +16,32 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public ResponseEntity<String> handleBadRequestException(Exception ex) {
-        log.info("error 400: " + ex.getMessage());
+        log.error("error 400: " + ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("error 400: " + ex.getMessage());
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
     public ResponseEntity<Object> handleNoResourceFoundException(NoHandlerFoundException ex) {
-        log.info("error 404: " + ex.getMessage());
+        log.error("error 404: " + ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("ERROR 404: " + ex.getMessage());
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     public ResponseEntity<Object> handleMethodNotSupportedException(HttpRequestMethodNotSupportedException ex) {
-        log.info("error 405: " + ex.getMessage());
+        log.error("error 405: " + ex.getMessage());
         return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body("ERROR 405: " + ex.getMessage());
     }
 
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<Object> handleAllExceptions(RuntimeException ex) {
-        log.info("error 500: " + ex.getMessage());
+        log.error("error 500: " + ex.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("ERROR 500: " + ex.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleException(Exception ex) {
-        log.info("Internal server error: " + ex.getMessage());
+        log.error("Internal server error: " + ex.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error: " + ex.getMessage());
     }
+
 }

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 class FoodstuffServiceTest {
@@ -25,6 +26,23 @@ class FoodstuffServiceTest {
 
     @Mock
     private CategoryRepository categoryRepository;
+
+    @Test
+    void testGetFoodByNameFromRepository() {
+        String foodName = "Test";
+        Foodstuff foodstuffEntity = new Foodstuff(foodName, 1, new Category());
+        Category categoryEntity = new Category("TestCategory");
+        FoodstuffDTO expectedFoodstuff = new FoodstuffDTO(foodstuffEntity);
+
+        when(cache.get(foodName)).thenReturn(null);
+        when(foodstuffRepository.getFoodByName(foodName)).thenReturn(foodstuffEntity);
+        when(categoryRepository.getCategoryByName(foodstuffEntity.getCategory().getName())).thenReturn(categoryEntity);
+
+        FoodstuffDTO result = foodstuffService.getFoodByName(foodName);
+
+        assertEquals(expectedFoodstuff.getName(), result.getName());
+        assertEquals(expectedFoodstuff.getCalorie(), result.getCalorie());
+    }
 
     @Mock
     private Cache cache;
@@ -46,24 +64,6 @@ class FoodstuffServiceTest {
         FoodstuffDTO result = foodstuffService.getFoodByName(foodName);
 
         assertEquals(cachedFoodstuff, result);
-    }
-
-    @Test
-    void testGetFoodByNameFromRepository() {
-        String foodName = "Test";
-        int calorie = 1;
-        Category category = new Category();
-        Foodstuff foodstuffEntity = new Foodstuff(foodName, calorie, category);
-        Category categoryEntity = new Category("TestCategory");
-        FoodstuffDTO expectedFoodstuff = new FoodstuffDTO(foodstuffEntity);
-
-        when(cache.get(foodName)).thenReturn(null);
-        when(foodstuffRepository.getFoodByName(foodName)).thenReturn(foodstuffEntity);
-        when(categoryRepository.getCategoryByName(foodstuffEntity.getCategory().getName())).thenReturn(categoryEntity);
-
-        FoodstuffDTO result = foodstuffService.getFoodByName(foodName);
-
-        assertEquals(expectedFoodstuff, result);
     }
 
     @Test
@@ -112,7 +112,8 @@ class FoodstuffServiceTest {
         int calorie = 1;
         Category category = new Category();
         Foodstuff foodstuffEntity = new Foodstuff(foodName, calorie, category);
-        when(foodstuffRepository.getFoodByName(foodName)).thenReturn(foodstuffEntity);
+
+        when(foodstuffRepository.getFoodByName(foodName)).thenReturn(null);
 
         foodstuffService.deleteFoodByName(foodName);
 
