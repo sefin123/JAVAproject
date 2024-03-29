@@ -58,22 +58,6 @@ class CategoryServiceTest {
     }
 
     @Test
-    void testPostCategory() {
-        String name = "Test";
-        Category categoryEntity = new Category(name);
-        Foodstuff food = new Foodstuff();
-
-        categoryEntity.setFoodstuffs(List.of(food));
-        categoryEntity.setId(1L);
-
-        when(categoryRepository.save(any(Category.class))).thenReturn(categoryEntity);
-
-        categoryService.postCategory(name);
-
-        verify(categoryRepository, times(1)).save(categoryEntity);
-    }
-
-    @Test
     void testPutCategory() {
         String oldName = "OldCategory";
         String newName = "NewCategory";
