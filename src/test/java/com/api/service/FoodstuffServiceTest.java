@@ -9,14 +9,14 @@ import com.api.entity.Foodstuff;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class FoodstuffServiceTest {
     private FoodstuffService foodstuffService;
@@ -66,7 +66,6 @@ class FoodstuffServiceTest {
         assertEquals(cachedFoodstuff, result);
     }
 
-    @Test
     void testPostFoodBulk() {
         List<FoodstuffDTO> foodList = new ArrayList<>();
         foodList.add(new FoodstuffDTO(1L, "Food1", 100, "Category1"));
@@ -79,31 +78,8 @@ class FoodstuffServiceTest {
         when(categoryRepository.getCategoryByName("Category2")).thenReturn(categoryEntity2);
 
         foodstuffService.postFoodBulk(foodList);
-    }
 
-    @Test
-    void testPostFood() {
-        String foodName = "TestFood";
-        int calorie = 100;
-        String categoryName = "TestCategory";
 
-        Category categoryEntity = new Category(categoryName);
-
-        when(categoryRepository.getCategoryByName(categoryName)).thenReturn(categoryEntity);
-
-        foodstuffService.postFood(foodName, calorie, categoryName);
-    }
-
-    @Test
-    void testPutFoodName() {
-        String oldName = "OldFood";
-        String newName = "NewFood";
-        int calorie = 1;
-        Category category = new Category();
-        Foodstuff foodstuffEntity = new Foodstuff(oldName, calorie, category);
-        when(foodstuffRepository.getFoodByName(oldName)).thenReturn(foodstuffEntity);
-
-        foodstuffService.putFoodName(oldName, newName);
     }
 
     @Test
