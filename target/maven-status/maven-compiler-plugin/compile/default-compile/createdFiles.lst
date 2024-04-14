@@ -1,0 +1,15 @@
+com\api\controller\CategoryController.class
+com\api\controller\FoodstuffController.class
+com\api\entity\Foodstuff.class
+com\api\ApiApplication.class
+com\api\dto\FoodstuffDTO.class
+com\api\component\Cache.class
+com\api\service\FoodstuffService.class
+com\api\component\RequestCounter.class
+com\api\dto\CategoryDTO.class
+com\api\service\CategoryService.class
+com\api\dao\CategoryRepository.class
+com\api\dao\FoodstuffRepository.class
+com\api\component\CounterAspect.class
+com\api\exception\GlobalExceptionHandler.class
+com\api\entity\Category.class

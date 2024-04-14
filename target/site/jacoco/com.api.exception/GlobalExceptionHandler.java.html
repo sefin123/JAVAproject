@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GlobalExceptionHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api</a> &gt; <a href="index.source.html" class="el_package">com.api.exception</a> &gt; <span class="el_source">GlobalExceptionHandler.java</span></div><h1>GlobalExceptionHandler.java</h1><pre class="source lang-java linenums">package com.api.exception;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.NoHandlerFoundException;
+
+@RestControllerAdvice
+<span class="fc" id="L14">@Slf4j</span>
+<span class="fc" id="L15">public class GlobalExceptionHandler {</span>
+
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseEntity&lt;String&gt; handleBadRequestException(Exception ex) {
+<span class="fc" id="L19">        log.error(&quot;error 400: &quot; + ex.getMessage());</span>
+<span class="fc" id="L20">        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(&quot;error 400: &quot; + ex.getMessage());</span>
+    }
+
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public ResponseEntity&lt;Object&gt; handleNoResourceFoundException(NoHandlerFoundException ex) {
+<span class="fc" id="L25">        log.error(&quot;error 404: &quot; + ex.getMessage());</span>
+<span class="fc" id="L26">        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(&quot;ERROR 404: &quot; + ex.getMessage());</span>
+    }
+
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ResponseEntity&lt;Object&gt; handleMethodNotSupportedException(HttpRequestMethodNotSupportedException ex) {
+<span class="fc" id="L31">        log.error(&quot;error 405: &quot; + ex.getMessage());</span>
+<span class="fc" id="L32">        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(&quot;ERROR 405: &quot; + ex.getMessage());</span>
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity&lt;Object&gt; handleAllExceptions(RuntimeException ex) {
+<span class="fc" id="L37">        log.error(&quot;error 500: &quot; + ex.getMessage());</span>
+<span class="fc" id="L38">        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(&quot;ERROR 500: &quot; + ex.getMessage());</span>
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity&lt;Object&gt; handleException(Exception ex) {
+<span class="fc" id="L43">        log.error(&quot;Internal server error: &quot; + ex.getMessage());</span>
+<span class="fc" id="L44">        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(&quot;Internal server error: &quot; + ex.getMessage());</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

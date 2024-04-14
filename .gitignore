@@ -32,4 +32,5 @@ checkstyle.xml
 mvnw
 mvnw.cmd
 pom.xml
-t
+t/
+target/

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FoodstuffController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api</a> &gt; <a href="index.source.html" class="el_package">com.api.controller</a> &gt; <span class="el_source">FoodstuffController.java</span></div><h1>FoodstuffController.java</h1><pre class="source lang-java linenums">package com.api.controller;
+
+import com.api.dto.FoodstuffDTO;
+import com.api.service.FoodstuffService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+<span class="fc" id="L12">@Slf4j</span>
+@CrossOrigin(origins = &quot;*&quot;)
+public class FoodstuffController {
+
+    private final FoodstuffService foodstuffService;
+
+    static final String SUCCESS_MSG = &quot;Success&quot;;
+
+<span class="fc" id="L20">    public FoodstuffController(FoodstuffService service) {</span>
+<span class="fc" id="L21">        this.foodstuffService = service;</span>
+<span class="fc" id="L22">    }</span>
+
+    @GetMapping(&quot;/food&quot;)
+    public ResponseEntity&lt;FoodstuffDTO&gt; getFood(@RequestParam String name) {
+<span class="fc" id="L26">        log.info(&quot;Call get food request&quot;);</span>
+<span class="fc" id="L27">        return ResponseEntity.ok(foodstuffService.getFoodByName(name));</span>
+    }
+
+    @GetMapping(&quot;/foods&quot;)
+    public ResponseEntity&lt;List&lt;FoodstuffDTO&gt;&gt; getFoods() {
+<span class="nc" id="L32">        log.info(&quot;Call get foods request&quot;);</span>
+<span class="nc" id="L33">        return ResponseEntity.ok(foodstuffService.getFoods());</span>
+    }
+
+    @PostMapping(&quot;/food&quot;)
+    public ResponseEntity&lt;String&gt; postFood(@RequestParam String name, int calorie, String category) {
+<span class="fc" id="L38">        log.info(&quot;Call post food request&quot;);</span>
+<span class="fc" id="L39">        foodstuffService.postFood(name, calorie, category);</span>
+<span class="fc" id="L40">        return ResponseEntity.ok(SUCCESS_MSG);</span>
+    }
+
+    @PostMapping(&quot;/food/bulk&quot;)
+    public ResponseEntity&lt;String&gt; postFoodBulk(@RequestBody List&lt;FoodstuffDTO&gt; food) {
+<span class="nc" id="L45">        log.info(&quot;Call post(bulk) food request&quot;);</span>
+<span class="nc" id="L46">        foodstuffService.postFoodBulk(food);</span>
+<span class="nc" id="L47">        return ResponseEntity.ok(SUCCESS_MSG);</span>
+    }
+
+    @PutMapping(&quot;/food&quot;)
+    public ResponseEntity&lt;String&gt; putFood(@RequestParam String oldName, String newName) {
+<span class="fc" id="L52">        log.info(&quot;Call put food request&quot;);</span>
+<span class="fc" id="L53">        foodstuffService.putFoodName(oldName, newName);</span>
+<span class="fc" id="L54">        return ResponseEntity.ok(SUCCESS_MSG);</span>
+    }
+
+    @DeleteMapping(&quot;/food&quot;)
+    public ResponseEntity&lt;String&gt; deleteFood(@RequestParam String name) {
+<span class="fc" id="L59">        log.info(&quot;Call delete food request&quot;);</span>
+<span class="fc" id="L60">        foodstuffService.deleteFoodByName(name);</span>
+<span class="fc" id="L61">        return ResponseEntity.ok(SUCCESS_MSG);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

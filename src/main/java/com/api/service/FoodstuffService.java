@@ -48,9 +48,14 @@ public class FoodstuffService {
 
     }
 
-    public void postFoodBulk(List<FoodstuffDTO> foodList) {
+    public List<FoodstuffDTO> getFoods() {
+        List<Foodstuff> foodstuffEntities = foodstuffRepository.getFoods();
+        return foodstuffEntities.stream().map(FoodstuffDTO::new).toList();
+    }
 
-        List<Foodstuff> foodstuffList = foodList.stream()
+    public void postFoodBulk(List<FoodstuffDTO> foodstuffDTOList) {
+
+        List<Foodstuff> foodstuffList = foodstuffDTOList.stream()
                 .map(food -> {
                     Category categoryEntity = categoryRepository.getCategoryByName(food.getCategory());
                     return new Foodstuff(food.getName(), food.getCalorie(), categoryEntity);

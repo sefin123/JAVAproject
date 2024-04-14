@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
+@CrossOrigin(origins = "*")
 public class FoodstuffController {
 
     private final FoodstuffService foodstuffService;
@@ -24,6 +25,12 @@ public class FoodstuffController {
     public ResponseEntity<FoodstuffDTO> getFood(@RequestParam String name) {
         log.info("Call get food request");
         return ResponseEntity.ok(foodstuffService.getFoodByName(name));
+    }
+
+    @GetMapping("/foods")
+    public ResponseEntity<List<FoodstuffDTO>> getFoods() {
+        log.info("Call get foods request");
+        return ResponseEntity.ok(foodstuffService.getFoods());
     }
 
     @PostMapping("/food")

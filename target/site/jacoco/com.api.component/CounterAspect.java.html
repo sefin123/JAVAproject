@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CounterAspect.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api</a> &gt; <a href="index.source.html" class="el_package">com.api.component</a> &gt; <span class="el_source">CounterAspect.java</span></div><h1>CounterAspect.java</h1><pre class="source lang-java linenums">package com.api.component;
+
+import jakarta.annotation.PreDestroy;
+import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
+
+<span class="nc" id="L10">@Slf4j</span>
+@Aspect
+@Component
+public class CounterAspect {
+
+    private final RequestCounter requestCounter;
+
+<span class="nc" id="L17">    public CounterAspect(RequestCounter requestCounter) {</span>
+<span class="nc" id="L18">        this.requestCounter = requestCounter;</span>
+<span class="nc" id="L19">    }</span>
+
+    @Pointcut(&quot;execution(* com.api.controller.*.post*(..))&quot;)
+    public void create() {
+
+<span class="nc" id="L24">    }</span>
+
+    @Pointcut(&quot;execution(* com.api.controller.*.get*(..))&quot;)
+    public void getEntity() {
+
+<span class="nc" id="L29">    }</span>
+
+   @Pointcut(&quot;execution(* com.api.controller.*.put*(..))&quot;)
+    public void put() {
+
+<span class="nc" id="L34">    }</span>
+
+    @Pointcut(&quot;execution(* com.api.controller.*.delete*(..))&quot;)
+    public void delete() {
+
+<span class="nc" id="L39">    }</span>
+
+    @Pointcut(&quot;execution(* com.api.exception.*.handle*(..))&quot;)
+    public void handle() {
+
+<span class="nc" id="L44">    }</span>
+
+    @After(&quot;create() || getEntity() || put() || delete() || handle()&quot;)
+    void countRequest() {
+<span class="nc" id="L48">        requestCounter.incrementAndGet();</span>
+<span class="nc" id="L49">    }</span>
+
+    @PreDestroy
+    void logCount() {
+<span class="nc" id="L53">        log.info(&quot;Total request count {}&quot;, requestCounter.getCounter());</span>
+<span class="nc" id="L54">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,10 @@
+com\api\controller\CategoryControllerTest.class
+com\api\exception\GlobalExceptionHandlerTest.class
+com\api\service\CategoryServiceTest.class
+com\api\controller\FoodstuffControllerTest.class
+com\api\dto\CategoryDTOTest.class
+com\api\component\CacheTest.class
+com\api\dto\FoodstuffDTOTest.class
+com\api\entity\CategoryTest.class
+com\api\service\FoodstuffServiceTest.class
+com\api\entity\FoodstuffTest.class

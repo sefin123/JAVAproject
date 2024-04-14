@@ -1,0 +1,14 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+api,com.api.component,Cache,0,35,0,0,0,11,0,5,0,5
+api,com.api.component,RequestCounter,17,0,0,0,4,0,3,0,3,0
+api,com.api.component,CounterAspect,26,0,0,0,13,0,9,0,9,0
+api,com.api.dto,CategoryDTO,4,47,0,0,0,15,1,8,1,8
+api,com.api.dto,FoodstuffDTO,0,66,0,0,0,18,0,11,0,11
+api,com.api.entity,Foodstuff,0,43,0,0,0,11,0,10,0,10
+api,com.api.entity,Category,4,26,0,0,0,8,1,7,1,7
+api,com.api.service,FoodstuffService,74,73,0,2,18,19,5,5,5,4
+api,com.api.service,CategoryService,11,78,0,2,3,21,1,6,1,5
+api,com.api,ApiApplication,8,0,0,0,3,0,2,0,2,0
+api,com.api.controller,CategoryController,0,50,0,0,0,15,0,6,0,6
+api,com.api.controller,FoodstuffController,18,52,0,0,5,15,2,6,2,6
+api,com.api.exception,GlobalExceptionHandler,0,67,0,0,0,12,0,7,0,7

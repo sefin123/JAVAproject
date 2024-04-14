@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FoodstuffDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api</a> &gt; <a href="index.source.html" class="el_package">com.api.dto</a> &gt; <span class="el_source">FoodstuffDTO.java</span></div><h1>FoodstuffDTO.java</h1><pre class="source lang-java linenums">package com.api.dto;
+
+import com.api.entity.Foodstuff;
+import lombok.Getter;
+import lombok.Setter;
+
+<span class="fc" id="L7">@Setter</span>
+@Getter
+public class FoodstuffDTO {
+
+<span class="fc" id="L11">    private Long id;</span>
+
+<span class="fc" id="L13">    private String name;</span>
+
+<span class="fc" id="L15">    private int calorie;</span>
+
+<span class="fc" id="L17">    private String category;</span>
+
+<span class="fc" id="L19">    public FoodstuffDTO(Long id, String name, int calorie, String category) {</span>
+<span class="fc" id="L20">        this.id = id;</span>
+<span class="fc" id="L21">        this.name = name;</span>
+<span class="fc" id="L22">        this.calorie = calorie;</span>
+<span class="fc" id="L23">        this.category = category;</span>
+<span class="fc" id="L24">    }</span>
+
+<span class="fc" id="L26">    public FoodstuffDTO(Foodstuff foodstuff) {</span>
+<span class="fc" id="L27">        this.id = foodstuff.getId();</span>
+<span class="fc" id="L28">        this.name = foodstuff.getName();</span>
+<span class="fc" id="L29">        this.calorie = foodstuff.getCalorie();</span>
+<span class="fc" id="L30">        this.category = foodstuff.getCategory().getName();</span>
+
+<span class="fc" id="L32">    }</span>
+
+<span class="fc" id="L34">    public FoodstuffDTO() { }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
